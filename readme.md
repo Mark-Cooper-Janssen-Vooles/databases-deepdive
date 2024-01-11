@@ -5,7 +5,7 @@
 - [N+1 Problem](#n1-problem)
 - [Normalization](#normalization)
 - [Failure Modes](#failure-modes)
-- Profiling Performance
+- [Profiling Performance](#profiling-performance)
 
 ## ORMs
 - Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm. When talking about ORM, most people are referring to a library that implements the Object-Relational Mapping technique.  
