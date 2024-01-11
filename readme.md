@@ -4,7 +4,7 @@
 - [ACID](#acid)
 - [N+1 Problem](#n1-problem)
 - [Normalization](#normalization)
-- Failure Modes
+- [Failure Modes](#failure-modes)
 - Profiling Performance
 
 ## ORMs
@@ -154,5 +154,22 @@ Other things to note:
 
 
 ## Failure Modes 
+There are several different failure modes that can occur in a database, including:
+- Read contention: when multiple clients or processes are trying to read data from the same location in the db at the same time - can lead to delays or errors
+- Write contention: multiple clients or pcoesses are trying to write data to the same location in the db at the same time - can lead to delays or errors
+- Thundering herd: occurs when a large number of clients or processes try to access the same resource simultaneously - can lead to exhaustion and reduced performance 
+- Cascade: occurs when a failure in one part of the db system causes a chain reaction that leads to failures in other parts
+- Deadlock: two or more transactions are waiting for each other to release a lock on a resource, leading to a standstill
+- Corruption: data in the db becomes corrupted, which can lead to errors or unexpected results when reading / writing to the db
+- Hardware failure: hardwarecomponents, i.e. disk drives or memory, fail, leading to loss or corruption
+- Software failure: software components i.e. db management system of application, failin, leading to errors or unexpected results
+- Network failure: network connection between the db and client is lost - leading to errors or timeouts when trying to access the db
+- Denial of Service (DoS) attack: occurs when a malicious actor attempts to overwhelm the db with requests, leading to resource exhaustion and reduced performance
 
 ## Profiling Performance 
+Ther eare several ways to profile the performance of a db:
+- Monitor system performance: use tools like windows task manager or unix/linux top command to monitor the performance of the db server. see the overall CPU, memory, disk usage of the system to identity resource bottlenecks
+- Use db-specific tools: most database management systems (DBMSs) have their own tools for monitoring performance. i.e. Microsoft SQL server has 'SQL Server Management Studio'. These tools allow you to see specific performance metrics, such as the amount of time spent waiting on locks of the number of physical reads and writes.
+- Use third-party tools: SolarWinds DB Performance Analyzer, etc. These can help you profile the performance of a database to identify bottlenecks.
+- Analyze slow queries: you can use tools like EXPLAIN PLAN or SHOW PLAN in MySQL or SQL Server to see the execution plan for the query and identify any potential issues
+- Monitor application performance: if there is a specific app using the db having issues, you can use tools like Application Insights or New Relic to monitor the performance of the application and identify any issues that may be related to the db.
