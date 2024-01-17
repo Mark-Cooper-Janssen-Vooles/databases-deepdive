@@ -6,6 +6,8 @@
 - [Normalization](#normalization)
 - [Failure Modes](#failure-modes)
 - [Profiling Performance](#profiling-performance)
+- [Scaling Databases](#scaling-databases)
+  - Database Indexes
 
 ## ORMs
 - Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm. When talking about ORM, most people are referring to a library that implements the Object-Relational Mapping technique.  
@@ -173,3 +175,15 @@ Ther eare several ways to profile the performance of a db:
 - Use third-party tools: SolarWinds DB Performance Analyzer, etc. These can help you profile the performance of a database to identify bottlenecks.
 - Analyze slow queries: you can use tools like EXPLAIN PLAN or SHOW PLAN in MySQL or SQL Server to see the execution plan for the query and identify any potential issues
 - Monitor application performance: if there is a specific app using the db having issues, you can use tools like Application Insights or New Relic to monitor the performance of the application and identify any issues that may be related to the db.
+
+## Scaling Databases 
+Scaling DBs is the process of adapting them to handle more data and users efficiently. Achieved by either upgrading existing hardware (vertical scaling) or adding more servers (horizontal scaling). Techniques like sharding and replication are key. 
+- Replication:
+  - creating copies of a DB - adding fault tolerance
+  - if one DB goes down the 'cluster' will still be able to serve client requests 
+  - client requests can also be spread across all the DBs 
+- Partitioning (aka sharding)
+  - distrubtes data across multiple nodes in a cluster
+  - each 'replica set' only stores a portion of the data based on a collection sharding key (sharding stratergy)
+    - e.g. the first replica set might store info on users with names starting with A-P and the second set from Q-Z 
+  - DB queries need to determine which replicas contain the relevant data
